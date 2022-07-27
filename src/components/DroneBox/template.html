@@ -1,0 +1,58 @@
+<component :is="FlightMap" :Lattitude='0' :Longitude='0'/> 
+<div v-if="uavFrame" class="drone-info-box">
+  <div class="headline">UAV BOX</div>
+  <div class="uav-data">
+    <div class="attr-row">
+      <div class="attr-name">ID urządzenia</div>
+      <div class="attr-value">{{uavFrame.device_id}}</div>
+    </div>
+    <div class="attr-row">
+      <div class="attr-name">Typ urządzenia</div>
+      <div class="attr-value">{{uavFrame.device_type}}</div>
+    </div>
+    <div class="attr-row">
+      <div class="attr-name">Typ ramki</div>
+      <div class="attr-value">{{uavFrame.frame_type}}</div>
+    </div>
+    <div class="attr-row">
+      <div class="attr-name">Wersja ramki</div>
+      <div class="attr-value">{{uavFrame.frame_version}}</div>
+    </div>
+    <div class="attr-row">
+      <div class="attr-name">Wysokość</div>
+      <div class="attr-value">{{uavFrame.alt}}</div>
+    </div>
+    <div class="attr-row">
+      <div class="attr-name">Prędkość względem ziemi</div>
+      <div class="attr-value">{{uavFrame.ground_speed}}</div>
+    </div>
+    <div class="attr-row">
+      <div class="attr-name">Bieżące zużycie baterii</div>
+      <div class="attr-value">{{uavFrame.battery_current_consumed}}</div>
+    </div>
+
+    <div class="attr-row">
+      <div class="attr-name">Znacznik czasu wysłania</div>
+      <div class="attr-value">{{uavFrame.timestamp}}</div>
+    </div>
+    <div class="attr-row">
+      <div class="attr-name">Czas wysłania po konwersji</div>
+      <div class="attr-value">{{customFormat(uavFrame.timestamp)}}</div>
+    </div>
+    <div class="attr-row">
+      <div class="attr-name">Czas dotarcia</div>
+      <div class="attr-value">{{customFormat(Date.now())}}</div>
+    </div>
+    <div class="attr-row">
+      <div class="attr-name">Lag</div>
+      <div class="attr-value">{{Date.now()-uavFrame.timestamp}}</div>
+    </div>
+  </div>
+</div>
+<div v-if="uavFrame" class="drone-control-box">
+  <Attitude class="indicator" :size="200" :roll="uavFrame.roll/Math.PI*180" :pitch="uavFrame.pitch/Math.PI*180"/>
+  <Heading class="indicator" :size="200" :heading="uavFrame.head/100" />
+  <Variometer class="indicator" :size="200" :vario="0.5" />
+  <Airspeed class="indicator" :size="200" :airspeed="45" />
+  <Altimeter class="indicator" :size="200" :altitude="uavFrame.relative_alt/100" :pressure="3500" />
+</div>

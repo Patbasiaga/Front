@@ -1,0 +1,112 @@
+header {
+  background-color: rgb(24, 32, 48);
+  position        : fixed;
+  top             : 0px;
+  width           : 100%;
+  transition      : 0.5s ease all;
+  padding         : 4px;
+
+  nav {
+    display       : flex;
+    flex-direction: row;
+    position      : relative;
+    padding       : 12px;
+    width         : 100%;
+    margin        : 0 auto;
+    color         : white;
+    font-family   : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    @media (min-width: 1440px) {
+      max-width: 1140px;
+    }
+  }
+
+  ul,
+  .link {
+    font-weight    : 500;
+    list-style     : none;
+    text-decoration: none;
+  }
+
+  li {
+    text-transform: uppercase;
+    padding       : 16px;
+    margin-left   : 16px;
+    display       : inline-flex;
+  }
+
+  .link {
+    font-size     : 14px;
+    transition    : 0.5s ease all;
+    padding-bottom: 4px;
+    border-bottom : 1px solid transparent;
+    color         : white;
+
+    &:hover {
+      color       : #00afea;
+      border-color: #00afea;
+    }
+  }
+
+  .navigation {
+    display        : flex;
+    align-items    : center;
+    flex           : 1;
+    justify-content: flex;
+  }
+
+  .icon {
+    display : flex;
+    position: absolute;
+    top     : -1px;
+    right   : 34px;
+    height  : 100%;
+
+    i {
+      cursor    : pointer;
+      font-size : 26px;
+      transition: 0.8s ease all;
+    }
+  }
+
+  .icon-active {
+    transform: rotate(180deg);
+  }
+
+  .drop-down-nav {
+    display         : flex;
+    flex-direction  : column;
+    position        : fixed;
+    width           : 100%;
+    max-width       : 250px;
+    height          : 100%;
+    top             : 0px;
+    left            : 0px;
+    background-color: white;
+    padding-inline-start: 0px;
+
+    .link {
+      color: black;
+    }
+  }
+
+  .mobile-nav-enter-active,
+  .mobile-nav-leave-active {
+    transition: 1s ease all;
+  }
+
+  .mobile-nav-enter-from,
+  .mobile-nav-leave-to {
+    transform: translate(-250px);
+  }
+
+  .mobile-nav-enter-to {
+    transform: translate(0px);
+  }
+}
+
+.scrolled-nav {
+  background-color: red;
+  box-shadow      : 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.6);
+}
